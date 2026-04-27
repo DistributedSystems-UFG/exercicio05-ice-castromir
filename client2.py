@@ -13,4 +13,9 @@ if (not printer1) or (not printer2):
 printer1.printString("Hello World from printer1!")
 printer2.printString("Hello World from printer2!")
 
+print(printer1.upper("hello"))
+print(printer2.upper("world"))
+print(printer1.length("hello"))
+print(printer2.length("world"))
+
 communicator.waitForShutdown()

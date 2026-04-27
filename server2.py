@@ -8,6 +8,12 @@ class PrinterI(Demo.Printer):
     def printString(self, s, current=None):
         print(self.t, s)
 
+    def upper(self, s, current=None):
+        return (self.t + " " + s).upper()
+
+    def length(self, s, current=None):
+        return len(self.t + " " + s)
+
 communicator = Ice.initialize(sys.argv) 
 
 adapter = communicator.createObjectAdapterWithEndpoints("SimpleAdapter", "default -p 11000")

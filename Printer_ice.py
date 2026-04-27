@@ -22,6 +22,7 @@ _M_Demo = Ice.openModule('Demo')
 __name__ = 'Demo'
 
 _M_Demo._t_Printer = IcePy.defineValue('::Demo::Printer', Ice.Value, -1, (), False, True, None, ())
+_M_Demo._t_Math = IcePy.defineValue('::Demo::Math', Ice.Value, -1, (), False, True, None, ())
 
 if 'PrinterPrx' not in _M_Demo.__dict__:
     _M_Demo.PrinterPrx = Ice.createTempClass()
@@ -38,6 +39,30 @@ if 'PrinterPrx' not in _M_Demo.__dict__:
 
         def end_printString(self, _r):
             return _M_Demo.Printer._op_printString.end(self, _r)
+
+        def upper(self, s, context=None):
+            return _M_Demo.Printer._op_upper.invoke(self, ((s, ), context))
+
+        def upperAsync(self, s, context=None):
+            return _M_Demo.Printer._op_upper.invokeAsync(self, ((s, ), context))
+
+        def begin_upper(self, s, _response=None, _ex=None, _sent=None, context=None):
+            return _M_Demo.Printer._op_upper.begin(self, ((s, ), _response, _ex, _sent, context))
+
+        def end_upper(self, _r):
+            return _M_Demo.Printer._op_upper.end(self, _r)
+
+        def length(self, s, context=None):
+            return _M_Demo.Printer._op_length.invoke(self, ((s, ), context))
+
+        def lengthAsync(self, s, context=None):
+            return _M_Demo.Printer._op_length.invokeAsync(self, ((s, ), context))
+
+        def begin_length(self, s, _response=None, _ex=None, _sent=None, context=None):
+            return _M_Demo.Printer._op_length.begin(self, ((s, ), _response, _ex, _sent, context))
+
+        def end_length(self, _r):
+            return _M_Demo.Printer._op_length.end(self, _r)
 
         @staticmethod
         def checkedCast(proxy, facetOrContext=None, context=None):
@@ -71,6 +96,12 @@ if 'PrinterPrx' not in _M_Demo.__dict__:
         def printString(self, s, current=None):
             raise NotImplementedError("servant method 'printString' not implemented")
 
+        def upper(self, s, current=None):
+            raise NotImplementedError("servant method 'upper' not implemented")
+
+        def length(self, s, current=None):
+            raise NotImplementedError("servant method 'length' not implemented")
+
         def __str__(self):
             return IcePy.stringify(self, _M_Demo._t_PrinterDisp)
 
@@ -80,8 +111,87 @@ if 'PrinterPrx' not in _M_Demo.__dict__:
     Printer._ice_type = _M_Demo._t_PrinterDisp
 
     Printer._op_printString = IcePy.Operation('printString', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (), None, ())
+    Printer._op_upper = IcePy.Operation('upper', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (((), IcePy._t_string, False, 0),), None, ())
+    Printer._op_length = IcePy.Operation('length', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (((), IcePy._t_int, False, 0),), None, ())
 
     _M_Demo.Printer = Printer
     del Printer
+
+if 'MathPrx' not in _M_Demo.__dict__:
+    _M_Demo.MathPrx = Ice.createTempClass()
+    class MathPrx(Ice.ObjectPrx):
+
+        def add(self, a, b, context=None):
+            return _M_Demo.Math._op_add.invoke(self, ((a, b, ), context))
+
+        def addAsync(self, a, b, context=None):
+            return _M_Demo.Math._op_add.invokeAsync(self, ((a, b, ), context))
+
+        def begin_add(self, a, b, _response=None, _ex=None, _sent=None, context=None):
+            return _M_Demo.Math._op_add.begin(self, ((a, b, ), _response, _ex, _sent, context))
+
+        def end_add(self, _r):
+            return _M_Demo.Math._op_add.end(self, _r)
+
+        def mul(self, a, b, context=None):
+            return _M_Demo.Math._op_mul.invoke(self, ((a, b, ), context))
+
+        def mulAsync(self, a, b, context=None):
+            return _M_Demo.Math._op_mul.invokeAsync(self, ((a, b, ), context))
+
+        def begin_mul(self, a, b, _response=None, _ex=None, _sent=None, context=None):
+            return _M_Demo.Math._op_mul.begin(self, ((a, b, ), _response, _ex, _sent, context))
+
+        def end_mul(self, _r):
+            return _M_Demo.Math._op_mul.end(self, _r)
+
+        @staticmethod
+        def checkedCast(proxy, facetOrContext=None, context=None):
+            return _M_Demo.MathPrx.ice_checkedCast(proxy, '::Demo::Math', facetOrContext, context)
+
+        @staticmethod
+        def uncheckedCast(proxy, facet=None):
+            return _M_Demo.MathPrx.ice_uncheckedCast(proxy, facet)
+
+        @staticmethod
+        def ice_staticId():
+            return '::Demo::Math'
+    _M_Demo._t_MathPrx = IcePy.defineProxy('::Demo::Math', MathPrx)
+
+    _M_Demo.MathPrx = MathPrx
+    del MathPrx
+
+    _M_Demo.Math = Ice.createTempClass()
+    class Math(Ice.Object):
+
+        def ice_ids(self, current=None):
+            return ('::Demo::Math', '::Ice::Object')
+
+        def ice_id(self, current=None):
+            return '::Demo::Math'
+
+        @staticmethod
+        def ice_staticId():
+            return '::Demo::Math'
+
+        def add(self, a, b, current=None):
+            raise NotImplementedError("servant method 'add' not implemented")
+
+        def mul(self, a, b, current=None):
+            raise NotImplementedError("servant method 'mul' not implemented")
+
+        def __str__(self):
+            return IcePy.stringify(self, _M_Demo._t_MathDisp)
+
+        __repr__ = __str__
+
+    _M_Demo._t_MathDisp = IcePy.defineClass('::Demo::Math', Math, (), None, ())
+    Math._ice_type = _M_Demo._t_MathDisp
+
+    Math._op_add = IcePy.Operation('add', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_int, False, 0), ((), IcePy._t_int, False, 0),), (((), IcePy._t_int, False, 0),), None, ())
+    Math._op_mul = IcePy.Operation('mul', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_int, False, 0), ((), IcePy._t_int, False, 0),), (((), IcePy._t_int, False, 0),), None, ())
+
+    _M_Demo.Math = Math
+    del Math
 
 # End of module Demo
